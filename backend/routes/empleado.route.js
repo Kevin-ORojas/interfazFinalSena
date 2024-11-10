@@ -21,10 +21,10 @@ const empleadoCtrl = require("../controllers/empleado.controller");
 /* generamos un ejemplo cuando le soliciten
 algo al servidor por el método GET **/
 
-router.get("/", empleadoCtrl.getEmpleados);
-router.post("/", empleadoCtrl.createEmpleados);
-router.get("/:id", empleadoCtrl.getUnicoEmpleado);
-router.put("/:id", empleadoCtrl.editarEmpleado);
-router.delete("/:id", empleadoCtrl.eliminarEmpleado);
+router.get("/", empleadoCtrl.getEmpleados); // ruta mas limpia (obtener los empleados)
+router.post("/", empleadoCtrl.createEmpleados); // guardar empleados
+router.get("/:id", empleadoCtrl.getUnicoEmpleado); // obtiene un unico empleado
+router.put("/:id", empleadoCtrl.editarEmpleado); // actualizar datos (uno a la vez)
+router.delete("/:id", empleadoCtrl.eliminarEmpleado); // eliminar el empleado
 
 module.exports = router;
