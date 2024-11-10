@@ -16,6 +16,9 @@ const router = express.Router();
 
 // Importamos el modelo
 
+/* generamos un ejemplo cuando le soliciten
+algo al servidor por el método GET **/
+
 router.get("/", (req, res) => {
   res.json({
     status: "API REST funcionando",
