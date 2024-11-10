@@ -14,6 +14,7 @@ const GetEmpleados = () => {
     <div>
       <h2>Lista de Empleados</h2>
       <ul>
+        {isLoading && <li>Loading...</li>}
         {data &&
           data.map(
             ({ nombre, id, apellido, puesto, departamento, salario }) => (

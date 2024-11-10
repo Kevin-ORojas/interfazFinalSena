@@ -1,6 +1,9 @@
 import { useState } from "react";
-import Home from "./components/home/Home";
-import { Sidebar } from "./components/sidebar/Sidebar";
+import Home from "./components/Home";
+import { Sidebar } from "./components/Sidebar";
+import { Route, Routes } from "react-router-dom";
+import GetEmpleados from "./components/getEmpleados";
+import { AgregaEmpleado } from "./components/AgregaEmpleado";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -9,7 +12,13 @@ function App() {
     <>
       <div className="flex">
         <Sidebar isLoading={false} />
-        <Home />
+
+        <Routes>
+          {/* Aquí se añadirán las rutas para cada componente */}
+          <Route path="home" element={<Home />} />
+          <Route path="getEmpleados" element={<GetEmpleados />} />
+          <Route path="addEmpleados" element={<AgregaEmpleado />} />
+        </Routes>
       </div>
     </>
   );
