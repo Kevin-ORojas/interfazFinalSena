@@ -14,15 +14,17 @@ const express = require("express");
 
 const router = express.Router();
 
+const empleadoCtrl = require("../controllers/empleado.controller");
+
 // Importamos el modelo
 
 /* generamos un ejemplo cuando le soliciten
 algo al servidor por el método GET **/
 
-router.get("/", (req, res) => {
-  res.json({
-    status: "API REST funcionando",
-  });
-});
+router.get("/", empleadoCtrl.getEmpleados);
+router.post("/", empleadoCtrl.createEmpleados);
+router.get("/:id", empleadoCtrl.getUnicoEmpleado);
+router.put("/:id", empleadoCtrl.editarEmpleado);
+router.delete("/:id", empleadoCtrl.eliminarEmpleado);
 
 module.exports = router;
