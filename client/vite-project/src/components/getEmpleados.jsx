@@ -1,4 +1,3 @@
-// GetEmpleados.jsx
 import React from "react";
 import { useFetch } from "../hooks/useFetch";
 
@@ -11,37 +10,57 @@ const GetEmpleados = () => {
   if (hasError) return <p>Error: {error.message}</p>;
 
   return (
-    <div className="">
+    <div className="px-4">
       <h2 className="mt-4 text-center mb-4">Lista de Empleados</h2>
-      <div className="px-4">
-        {isLoading && <li>Loading...</li>}
-        {data &&
-          data.map(
-            ({ nombre, id, apellido, puesto, departamento, salario }) => (
-              <div key={id}>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Nombre</th>
-                      <th>Apellido</th>
-                      <th>puesto</th>
-                      <th>departamento</th>
-                      <th>salario</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>{nombre}</td>
-                      <td>{apellido}</td>
-                      <td>{puesto}</td>
-                      <td>{departamento}</td>
-                      <td>{salario}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            )
-          )}
+      <div className="overflow-x-auto">
+        <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-md flex-wrap">
+          <thead>
+            <tr className="bg-gray-200 text-gray-600 uppercase text-xs md:text-sm leading-normal">
+              <th className="py-2 px-4 md:py-3 md:px-6 text-left border border-slate-600">
+                Nombre
+              </th>
+              <th className="py-2 px-4 md:py-3 md:px-6 text-left border border-slate-600">
+                Apellido
+              </th>
+              <th className="py-2 px-4 md:py-3 md:px-6 text-left border border-slate-600">
+                Puesto
+              </th>
+              <th className="py-2 px-4 md:py-3 md:px-6 text-left border border-slate-600">
+                Departamento
+              </th>
+              <th className="py-2 px-4 md:py-3 md:px-6 text-left border border-slate-600">
+                Salario
+              </th>
+            </tr>
+          </thead>
+          <tbody className="text-gray-700 text-xs md:text-sm font-light">
+            {data &&
+              data.map(
+                ({ nombre, id, apellido, puesto, departamento, salario }) => (
+                  <tr
+                    key={id}
+                    className="border-b border-gray-200 hover:bg-gray-100"
+                  >
+                    <td className="py-2 px-4 md:py-3 md:px-6 text-left border border-slate-600">
+                      {nombre}
+                    </td>
+                    <td className="py-2 px-4 md:py-3 md:px-6 text-left border border-slate-600">
+                      {apellido}
+                    </td>
+                    <td className="py-2 px-4 md:py-3 md:px-6 text-left border border-slate-600">
+                      {puesto}
+                    </td>
+                    <td className="py-2 px-4 md:py-3 md:px-6 text-left border border-slate-600">
+                      {departamento}
+                    </td>
+                    <td className="py-2 px-4 md:py-3 md:px-6 text-left border border-slate-600">
+                      {salario}
+                    </td>
+                  </tr>
+                )
+              )}
+          </tbody>
+        </table>
       </div>
     </div>
   );

@@ -4,11 +4,8 @@ import { Sidebar } from "./components/Sidebar";
 import { Route, Routes } from "react-router-dom";
 import GetEmpleados from "./components/getEmpleados";
 import { AgregaEmpleado } from "./components/AgregaEmpleado";
-import { Footer } from "./components/Footer";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <div className="flex">

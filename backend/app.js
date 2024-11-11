@@ -18,7 +18,7 @@ app.use(morgan("dev"));
 
 app.use(express.json()); // permite recibir y parsear datos en formato JSON
 
-app.use(cors({ origin: "http://localhost:8080" })); // metodo para comuncar con el cliente.
+app.use(cors({ origin: "http://localhost:5173" })); // metodo para comuncar con el cliente.
 
 // rutas
 
