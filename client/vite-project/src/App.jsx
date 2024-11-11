@@ -4,6 +4,7 @@ import { Sidebar } from "./components/Sidebar";
 import { Route, Routes } from "react-router-dom";
 import GetEmpleados from "./components/getEmpleados";
 import { AgregaEmpleado } from "./components/AgregaEmpleado";
+import { Footer } from "./components/Footer";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -17,7 +18,7 @@ function App() {
           {/* Aquí se añadirán las rutas para cada componente */}
           <Route path="home" element={<Home />} />
           <Route path="getEmpleados" element={<GetEmpleados />} />
-          <Route path="addEmpleados" element={<AgregaEmpleado />} />
+          <Route path="AgregaEmpleado" element={<AgregaEmpleado />} />
         </Routes>
       </div>
     </>

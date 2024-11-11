@@ -11,9 +11,9 @@ const GetEmpleados = () => {
   if (hasError) return <p>Error: {error.message}</p>;
 
   return (
-    <div>
-      <h2>Lista de Empleados</h2>
-      <ul>
+    <div className="">
+      <h2 className="mt-4 text-center mb-4">Lista de Empleados</h2>
+      <div className="px-4">
         {isLoading && <li>Loading...</li>}
         {data &&
           data.map(
@@ -42,7 +42,7 @@ const GetEmpleados = () => {
               </div>
             )
           )}
-      </ul>
+      </div>
     </div>
   );
 };
