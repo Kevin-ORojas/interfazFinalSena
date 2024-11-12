@@ -10,7 +10,7 @@ const GetEmpleados = () => {
   if (hasError) return <p>Error: {error.message}</p>;
 
   return (
-    <div className="px-4">
+    <div className="px-4 w-full">
       <h2 className="mt-4 text-center mb-4">Lista de Empleados</h2>
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-md flex-wrap">

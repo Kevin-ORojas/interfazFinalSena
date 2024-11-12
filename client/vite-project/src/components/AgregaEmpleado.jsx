@@ -3,13 +3,12 @@ import { addEmployed } from "../hooks/addEmployed";
 
 export const AgregaEmpleado = () => {
   const {
-    agregarEmpleado,
     handleInputChange,
     handleSubmit,
-    empleados,
+
     nombre,
     apellido,
-    telefono,
+
     email,
     puesto,
     departamento,

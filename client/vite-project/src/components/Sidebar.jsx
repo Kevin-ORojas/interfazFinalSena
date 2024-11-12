@@ -14,18 +14,18 @@ export const Sidebar = () => {
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex min-h-screen">
       <aside
         className={`w-64 h-screen bg-gray-800 text-white p-5 flex flex-col justify-between ${
           isOpen ? "block" : "hidden"
-        } md:block transition-all`}
+        } md:block  `}
       >
         {/* Contenedor superior (logo, botón de cierre, navegación) */}
         <div>
           <div className="flex justify-around items-center ">
             <div className="border w-10 h-10 rounded-full"></div>
-            <button onClick={toggleClose}>
-              <CloseIcon className="text-3xl" />
+            <button className="md:hidden" onClick={toggleClose}>
+              <CloseIcon className="text-3xl " /> 
             </button>
           </div>
           <div className="flex flex-col gap-5 py-8 h-auto">
@@ -75,10 +75,15 @@ export const Sidebar = () => {
       </aside>
 
       {/* Contenido */}
-      <div className="bg-zinc-600">
+
+      <div
+        className={`${
+          isOpen ? "hidden transition duration-700" : "block "
+        } transition-all ease-in-out delay-150 bg-blue-500 `}
+      >
         {/* Botón de menú solo en pantallas pequeñas */}
         <button className="md:hidden text-white p-2" onClick={toggleSidebar}>
-          <span className="text-3xl">&#9776;</span>
+          <span className="text-3xl text-black">&#9776;</span>
         </button>
       </div>
     </div>
