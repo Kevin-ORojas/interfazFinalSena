@@ -1,7 +1,10 @@
 import React from "react";
 import { useState } from "react";
+import { alert } from "../alerts/alert";
 
 export const addEmployed = () => {
+  const { showAlert } = alert();
+
   //estado que almacena la lista de empleados
   const [empleados, setEmpleados] = useState([]);
 
@@ -61,6 +64,7 @@ export const addEmployed = () => {
         const data = await response.json();
         console.log("empleado agg", data);
 
+        showAlert();
         // limpiar el formulario
         setFormData({
           nombre: "",

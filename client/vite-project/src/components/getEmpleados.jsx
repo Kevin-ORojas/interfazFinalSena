@@ -23,6 +23,9 @@ const GetEmpleados = () => {
                 Apellido
               </th>
               <th className="py-2 px-4 md:py-3 md:px-6 text-left border border-slate-600">
+                email
+              </th>
+              <th className="py-2 px-4 md:py-3 md:px-6 text-left border border-slate-600">
                 Puesto
               </th>
               <th className="py-2 px-4 md:py-3 md:px-6 text-left border border-slate-600">
@@ -36,7 +39,15 @@ const GetEmpleados = () => {
           <tbody className="text-gray-700 text-xs md:text-sm font-light">
             {data &&
               data.map(
-                ({ nombre, id, apellido, puesto, departamento, salario }) => (
+                ({
+                  nombre,
+                  id,
+                  apellido,
+                  puesto,
+                  email,
+                  departamento,
+                  salario,
+                }) => (
                   <tr
                     key={id}
                     className="border-b border-gray-200 hover:bg-gray-100"
@@ -46,6 +57,9 @@ const GetEmpleados = () => {
                     </td>
                     <td className="py-2 px-4 md:py-3 md:px-6 text-left border border-slate-600">
                       {apellido}
+                    </td>
+                    <td className="py-2 px-4 md:py-3 md:px-6 text-left border border-slate-600">
+                      {email}
                     </td>
                     <td className="py-2 px-4 md:py-3 md:px-6 text-left border border-slate-600">
                       {puesto}

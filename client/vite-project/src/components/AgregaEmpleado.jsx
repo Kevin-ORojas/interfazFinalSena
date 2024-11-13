@@ -5,10 +5,8 @@ export const AgregaEmpleado = () => {
   const {
     handleInputChange,
     handleSubmit,
-
     nombre,
     apellido,
-
     email,
     puesto,
     departamento,
@@ -50,7 +48,7 @@ export const AgregaEmpleado = () => {
           <label for="email">Email: </label>
           <input
             className="border-2 border-indigo-400 rounded-md hover:shadow-2xl hover:border-black cursor-pointer mb-4"
-            type="email"
+            type="text"
             id="email"
             name="email"
             value={email}
