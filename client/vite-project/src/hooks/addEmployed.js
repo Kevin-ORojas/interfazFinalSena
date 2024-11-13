@@ -45,6 +45,7 @@ export const addEmployed = () => {
   // manejo del input para los campos del formulario
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+
     setFormData({ ...formData, [name]: value });
   };
 

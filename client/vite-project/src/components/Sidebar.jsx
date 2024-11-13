@@ -25,25 +25,37 @@ export const Sidebar = () => {
           <div className="flex justify-around items-center ">
             <div className="border w-10 h-10 rounded-full"></div>
             <button className="md:hidden" onClick={toggleClose}>
-              <CloseIcon className="text-3xl " /> 
+              <CloseIcon className="text-3xl " />
             </button>
           </div>
           <div className="flex flex-col gap-5 py-8 h-auto">
-            <input
-              className="border-none rounded-md py-1  cursor-pointer px-2"
-              type="text"
-              placeholder="Search.."
-            />
-            <Link className="hover:bg-indigo-400 p-2" to={"../Home"}>
+            <div className="border border-b-indigo-500"></div>
+            <Link
+              className="hover:bg-indigo-400 hover:bg-left hover:translate-x-2 transition-transform duration-500 ease-in-out rounded-md p-2"
+              to={"../Home"}
+            >
               Inicio
             </Link>
 
-            <Link className="hover:bg-indigo-400 p-2" to={"../getEmpleados"}>
+            <Link
+              className="hover:bg-indigo-400 hover:bg-left hover:translate-x-2 transition-transform duration-500 ease-in-out rounded-md p-2"
+              to={"../getEmpleados"}
+            >
               Lista empleados
             </Link>
 
-            <Link className="hover:bg-indigo-400 p-2" to={"../AgregaEmpleado"}>
+            <Link
+              className="hover:bg-indigo-400 hover:bg-left hover:translate-x-2 transition-transform duration-500 ease-in-out rounded-md p-2"
+              to={"../AgregaEmpleado"}
+            >
               Agregar empleado
+            </Link>
+
+            <Link
+              className=" hover:bg-indigo-400 hover:bg-left hover:translate-x-2 transition-transform duration-500 ease-in-out rounded-md p-2"
+              to={"../SearchEmpleados"}
+            >
+              Buscar Empleado
             </Link>
           </div>
         </div>
