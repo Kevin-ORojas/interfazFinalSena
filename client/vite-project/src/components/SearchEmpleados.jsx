@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import { useBuscarEmpleados } from "../hooks/useBuscarEmpleado.js";
 
 export const SearchEmpleados = () => {
+  const [criterio, setCriterio] = useState(""); // Estado para guardar el texto del input de búsqueda
+  const { empleados, cargando, error } = useBuscarEmpleados();
+
+  const handleBuscar = (e) => {
+    setCriterio(e.target.value); // Actualizar el criterio de búsqueda
+  };
+
+  // Filtra los empleados que coinciden con el criterio de búsqueda
+  const empleadosFiltrados = criterio
+    ? empleados.filter(
+        (empleado) =>
+          empleado.nombre.toLowerCase().includes(criterio.toLowerCase()) // Compara el criterio con los nombres
+      )
+    : [];
+
   return (
     <div className="w-full ">
       <div className="text-center py-4 mt-10 px-6 ">
@@ -8,42 +24,59 @@ export const SearchEmpleados = () => {
           className="w-full p-3 rounded-md cursor-pointer shadow-blue-400 shadow-xl"
           type="text"
           placeholder="Buscar Empleado"
+          value={criterio} // El valor del input es el estado 'criterio'
+          onChange={handleBuscar} // Llamamos a manejar el cambio cada vez que el input cambie
         />
       </div>
 
-      {/* Agregar componentes para mostrar resultados */}
+      {/* Mostrar mensaje de carga si los empleados están siendo cargados */}
+      {cargando && <p>Cargando...</p>}
 
+      {/* Si hubo un error, lo mostramos */}
+      {error && <p>Error al cargar empleados: {error.message}</p>}
+
+      {/* Si no hay empleados filtrados, mostrar mensaje */}
       <div>
-        {/* Aquí se agregarán los resultados de la búsqueda */}
-        {/* Resultado 1 */}
-        <div className="py-4 px-6 border-b border-gray-200">
-          <h3>Empleado 1</h3>
-          <p>Nombre: John Doe</p>
-          <p>Apellido: Smith</p>
-          <p>Email: john.smith@example.com</p>
-          {/* Botón para editar o eliminar el empleado */}
-          <button className="bg-blue-500 mr-2 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-            Editar
-          </button>
-          <button className="bg-red-500  hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
-            Eliminar
-          </button>
-        </div>
-        {/* Resultado 2 */}
-        <div className="py-4 px-6 border-b border-gray-200">
-          <h3>Empleado 2</h3>
-          <p>Nombre: Jane Doe</p>
-          <p>Apellido: Johnson</p>
-          <p>Email: jane.johnson@example.com</p>
-          {/* Botón para editar o eliminar el empleado */}
-          <button className="bg-blue-500 mr-2 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-            Editar
-          </button>
-          {/* Botón para editar o eliminar el empleado */}
-          <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
-            Eliminar
-          </button>
-        </div>
+        {criterio && empleadosFiltrados.length === 0 ? (
+          <p>No hay resultados para </p>
+        ) : (
+          <div>
+            {empleadosFiltrados.map(
+              ({
+                nombre,
+                apellido,
+                email,
+                id,
+                puesto,
+                departamento,
+                salario,
+              }) => (
+                <div key={id}>
+                  <thead>
+                    <tr>
+                      <th>Nombre</th>
+                      <th>Apellido</th>
+                      <th>Email</th>
+                      <th>Puesto</th>
+                      <th>Departamento</th>
+                      <th>Salario</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{nombre}</td>
+                      <td>{apellido}</td>
+                      <td>{email}</td>
+                      <td>{puesto}</td>
+                      <td>{departamento}</td>
+                      <td>{salario}</td>
+                    </tr>
+                  </tbody>
+                </div>
+              )
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

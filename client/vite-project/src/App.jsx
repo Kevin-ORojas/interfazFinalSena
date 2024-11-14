@@ -14,7 +14,7 @@ function App() {
 
         <Routes>
           {/* Aquí se añadirán las rutas para cada componente */}
-          <Route path="home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="getEmpleados" element={<GetEmpleados />} />
           <Route path="AgregaEmpleado" element={<AgregaEmpleado />} />
           <Route path="SearchEmpleados" element={<SearchEmpleados />} />
