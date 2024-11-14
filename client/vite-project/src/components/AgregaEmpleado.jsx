@@ -90,7 +90,7 @@ export const AgregaEmpleado = () => {
             type="number"
             id="salario"
             name="salario"
-            value={salario.toFixed(2)}
+            value={salario}
             onChange={handleInputChange}
             required
           />
