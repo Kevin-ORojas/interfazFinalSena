@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
+import Home from "./Home";
 
 export const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,11 +15,11 @@ export const Sidebar = () => {
   };
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen relative">
       <aside
-        className={`w-64 h-screen bg-gray-800 text-white p-5 flex flex-col justify-between ${
-          isOpen ? "block" : "hidden"
-        } md:block  `}
+        className={`fixed w-64 left-0 top-0 h-screen  transition-transform duration-700 ease-in-out delay-150 bg-gray-800 text-white p-5 flex flex-col justify-between z-10 ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        }  md:translate-x-0  `}
       >
         {/* Contenedor superior (logo, botón de cierre, navegación) */}
         <div>
@@ -86,16 +87,17 @@ export const Sidebar = () => {
         </div>
       </aside>
 
-      {/* Contenido */}
-
       <div
-        className={`${
-          isOpen ? "hidden transition duration-700" : "block "
-        } transition-all ease-in-out delay-150 bg-blue-500 `}
+        className={`flex-grow transition-all md:ml-64 duration-700 ease-in-out bg-gray-800  ${
+          isOpen ? "ml-44  opacity-0" : "ml-0 opacity-100"
+        } `}
       >
-        {/* Botón de menú solo en pantallas pequeñas */}
-        <button className="md:hidden text-white p-2" onClick={toggleSidebar}>
-          <span className="text-3xl text-black">&#9776;</span>
+        <button
+          className="  top-4 left-4 md:hidden text-white p-4 px-6 rounded-md  shadow-lg 
+          "
+          onClick={toggleSidebar}
+        >
+          <span className="text-3xl text-white">&#9776;</span>
         </button>
       </div>
     </div>
