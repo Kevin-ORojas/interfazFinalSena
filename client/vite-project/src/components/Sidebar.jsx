@@ -33,7 +33,7 @@ export const Sidebar = () => {
             <div className="border border-b-indigo-500"></div>
             <Link
               className="hover:bg-indigo-400 hover:bg-left hover:translate-x-2 transition-transform duration-500 ease-in-out rounded-md p-2"
-              to={"../Home"}
+              to={"/"}
             >
               Inicio
             </Link>

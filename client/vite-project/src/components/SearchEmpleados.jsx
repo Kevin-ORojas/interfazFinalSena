@@ -38,44 +38,52 @@ export const SearchEmpleados = () => {
       {/* Si no hay empleados filtrados, mostrar mensaje */}
       <div>
         {criterio && empleadosFiltrados.length === 0 ? (
-          <p>No hay resultados para </p>
+          <p>No hay resultados para ver </p>
         ) : (
-          <div>
-            {empleadosFiltrados.map(
-              ({
-                nombre,
-                apellido,
-                email,
-                id,
-                puesto,
-                departamento,
-                salario,
-              }) => (
-                <div key={id}>
-                  <thead>
-                    <tr>
-                      <th>Nombre</th>
-                      <th>Apellido</th>
-                      <th>Email</th>
-                      <th>Puesto</th>
-                      <th>Departamento</th>
-                      <th>Salario</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>{nombre}</td>
-                      <td>{apellido}</td>
-                      <td>{email}</td>
-                      <td>{puesto}</td>
-                      <td>{departamento}</td>
-                      <td>{salario}</td>
-                    </tr>
-                  </tbody>
-                </div>
-              )
-            )}
-          </div>
+          <table className="w-full border-collapse border border-gray-400">
+            <thead className="w-full">
+              <tr className="bg-slate-400 ">
+                <th className="border">Nombre</th>
+                <th className="border">Apellido</th>
+                <th className="border">Email</th>
+                <th className="border">Puesto</th>
+                <th className="border">Departamento</th>
+                <th className="border">Salario</th>
+                <th className="border"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {empleadosFiltrados.map(
+                ({
+                  nombre,
+                  apellido,
+                  email,
+                  id,
+                  puesto,
+                  departamento,
+                  salario,
+                }) => (
+                  <tr key={id} className="px-4">
+                    <td className="px-6 font-serif border">{nombre}</td>
+                    <td className="px-6 font-serif border">{apellido}</td>
+                    <td className="px-6 font-serif border">{email}</td>
+                    <td className="px-6 font-serif border">{puesto}</td>
+                    <td className="px-6 font-serif border">{departamento}</td>
+                    <td className="px-6 font-serif border">{salario}</td>
+
+                    <td className="flex gap-6 justify-center">
+                      <button className="bg-red-400 border-none p-2">
+                        Edit
+                      </button>
+                      <button className="border-none bg-blue-400 p-2">
+                        delete
+                      </button>
+                    </td>
+                  </tr>
+                )
+              )}
+            </tbody>
+          </table>
         )}
       </div>
     </div>
