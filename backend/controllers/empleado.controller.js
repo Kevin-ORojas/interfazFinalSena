@@ -30,7 +30,7 @@ empleadoCtrl.getUnicoEmpleado = async (req, res) => {
 //actializar empleado
 
 empleadoCtrl.editarEmpleado = async (req, res) => {
-  const { id } = req.body;
+  const { id } = req.params;
   const empleadoEdit = {
     nombre: req.body.nombre,
     apellido: req.body.apellido,
@@ -38,13 +38,26 @@ empleadoCtrl.editarEmpleado = async (req, res) => {
     puesto: req.body.puesto,
     departamento: req.body.departamento,
     salario: req.body.salario,
-    fechaContratacion: req.body.fechaContratacion,
   };
 
-  await Empleado.findByIdAndUpdate(id, { $set: empleadoEdit }, { new: true });
-  res.json({
-    status: "Empleado actualizado",
-  });
+  console.log("datps recibidos", empleadoEdit);
+
+  try {
+    const empleadoActualizado = await Empleado.findByIdAndUpdate(
+      id,
+      { $set: empleadoEdit },
+      { new: true }
+    );
+    if (!empleadoActualizado) {
+      return res.status(404).json({ message: "Empleado no encontrado" });
+    }
+    res.json({
+      status: "Empleado actualizado",
+      empleadoActualizado,
+    });
+  } catch (error) {
+    res.status(500).json({ message: "ERROR AL ACTUALIZAR", error });
+  }
 };
 
 // eliminar empleado
